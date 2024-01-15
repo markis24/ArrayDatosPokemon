@@ -1,133 +1,72 @@
 
+
+function iniciar() {
+	location.reload();
+
+}
+
 function orderList(params) {
-
-}
-function searchList(params) {
-	let buscarPokemon = prompt("Que elemento quieres buscar ?");
-
-}
-function iniciar(params) {
-	location.reload();
-
-}
-function calcMitjana(params) {
-
-}
-
-function printList(params) {
-
-
-}
-
-// Array Multidimensional 
-
-
-function nuevaPartida() {
-
-
-}
-
-function reiniciarJuego() {
-	location.reload();
-}
-function ordenDescendente() {
+	// Boton para ordenar de manera ascendente y de manera descendente
 
 }
 function ordenAscendente() {
 
 }
-function medianaPeso() {
+
+function ordenDescendente() {
+
+}
+function searchList(params) {
+	let buscarPokemon = parseInt(prompt("Que elemento quieres buscar ?"));
 
 }
 
-// Meteoritos
 
-fetch("js/data/earthMeteorites.json")
-	.then((response) => response.json())
-	.then((data) => {
-		dades = data;
+function calcMitjana(params) {
+	let numeroMitjana = parseInt(prompt("Escribe un numero para hacer el calculo"));
+	let resultadoNumeroMitjana = numeroMitjana.toFixed(2);
+	alert("Este es el resultado " + resultadoNumeroMitjana)
+}
 
-		let meteoritosArray = [];
+function printList(params) {
 
-		dades.forEach((data) => {
-			meteoritosArray.push({
-				"Nombre": data.name
-			});
-		});
+	// Hacer tabla con DOM en javascript 
+	// para imprimir los atributos de los pokemons
 
-		// Mostrar el array en forma de tabla
-		// console.table(meteoritosArray);
-	});
+	// Array Multidimensional 
 
-// Array de Pokemons
+	let pokemonArrays = [
+		["Bulbasaur", "http://www.serebii.net/pokemongo/pokemon/001.png", "6.9 kg"],
+		["Ivysaur", "http://www.serebii.net/pokemongo/pokemon/002.png", "13.0 kg"]
+	];
+	// Iterando el array pokemonArrays
+	pokemonArrays.forEach((pokemon) => {
+		pokemon.forEach((data) => {
+			console.log(data);
+		})
+	})
+}
 
-fetch("js/data/pokemon.json")
-	.then((response) => response.json())
-	.then((data) => {
-		dades = data.pokemon;
+function tablaDOM() {
 
-		// Crear un array para almacenar la información de cada Pokémon
-		let pokemonArray = [];
+	let tabla = document.createElement("table");
+	tabla.style.border = "1px solid black";
+	// Creacion de for de filas
+	for (let i = 1; i <= 4; i++) {
+		// Crea las filas de la tabla
+		let fila = document.createElement("tr");
+		// Creacion de for columnas
+		for (let j = 1; j <= 4; j++) {
+			// Crea las columnas de la tabla
+			let columna = document.createElement("td");
+			let textoCelda = document.createTextNode(i + " : " + j);
+			columna.appendChild(textoCelda);
+			fila.appendChild(columna);
+			columna.style.border = "1px solid black";
+			columna.style.padding = "10px";
+		}
+		tabla.appendChild(fila);
+	}
 
-		// Utilizar forEach para iterar sobre cada Pokémon y añadirlo al array
-		dades.forEach((pokemon) => {
-			pokemonArray.push({
-				"Nombre": pokemon.name
-			});
-		});
-
-		// Mostrar el array en forma de tabla
-		// console.table(pokemonArray);
-	});
-
-
-// Array de peliculas
-
-fetch("js/data/movies.json")
-	.then((response) => response.json())
-	.then((data) => {
-		dades = data.movies;
-
-		let moviesArray = [];
-
-		dades.forEach((movies) => {
-			moviesArray.push({
-				"Nombre": movies.title
-			});
-		});
-
-		// Mostrar el array en forma de tabla
-	//	 console.table(moviesArray);
-	});
-
-
-
-// Array de municipios
-fetch("js/data/municipis.json")
-	.then((response) => response.json())
-	.then((data) => {
-		dades = data.elements;
-
-		let municipisArray = [];
-
-		dades.forEach(dades => {
-			municipisArray.push({
-				"Nombre ": dades.municipi_nom
-			})
-		});
-		console.table(municipisArray);
-	});
-
-
-/*
-
-
-// Funciones asincronas
-async function getPeliculas(){
-	const response = await response.json();
-	peliculas = data.movies;
-	return data.movies
-};
-
-
-*/
+	document.body.appendChild(tabla);
+}
