@@ -1,92 +1,87 @@
 
-// Array de Pokemons
+// Parte 0 
+// Acceder al JSON y listar los datos devueltos
 
+pokemonArrays = [];
 fetch("js/data/pokemon.json")
 	.then((response) => response.json())
 	.then((data) => {
+
 		dades = data.pokemon;
-
-		// Crear un array para almacenar la información de cada Pokémon
-		let pokemonArray = [];
-
 		// Utilizar forEach para iterar sobre cada Pokémon y añadirlo al array
+
 		dades.forEach((pokemon) => {
-			pokemonArray.push({
-				"Nombre": pokemon.name
+			pokemonArrays.push({
+				// Añadiendo los campos que quiero mostrar
+				"Id": pokemon.id,
+				"Nombre": pokemon.name,
+				"Img": pokemon.img,
+				"Peso": pokemon.weight,
 			});
 		});
 
 		// Mostrar el array en forma de tabla
-		 console.table(pokemonArray);
+		//		console.table(pokemonArrays);
 	});
 
-// Array de Municipios
-
-fetch("js/data/municipis.json")
-	.then((response) => response.json())
-	.then((data) => {
-		dades = data.elements;
-
-		let municipisArray = [];
-
-		dades.forEach(dades => {
-			municipisArray.push({
-				"Nombre ": dades.municipi_nom
-			})
-		});
-	//	console.table(municipisArray);
-	});
 // Array de Peliculas
-
+peliculasArray = [];
 fetch("js/data/movies.json")
 	.then((response) => response.json())
 	.then((data) => {
 		dades = data.movies;
 
-		let moviesArray = [];
-
 		dades.forEach((movies) => {
-			moviesArray.push({
-				"Nombre": movies.title
+			peliculasArray.push({
+				"Imagen": movies.url,
+				"Nombre": movies.title,
+				"Rating": movies.rating,
+				"Año": movies.year,
+
 			});
 		});
 
 		// Mostrar el array en forma de tabla
-	//	 console.table(moviesArray);
+			//console.table(peliculasArray);
 	});
 
 
-
 // Array de Meteoritos
+meteoritosArray = [];
 
 fetch("js/data/earthMeteorites.json")
 	.then((response) => response.json())
 	.then((data) => {
 		dades = data;
 
-		let meteoritosArray = [];
-
 		dades.forEach((data) => {
 			meteoritosArray.push({
-				"Nombre": data.name
+				"Id": data.id,
+				"Nombre": data.name,
+				"Masa": data.mass,
+				"Año": data.year,
 			});
 		});
 
 		// Mostrar el array en forma de tabla
-		// console.table(meteoritosArray);
+		//	console.table(meteoritosArray);
 	});
 
+// Array de Municipios
+municipiosArray = [];
 
+fetch("js/data/municipis.json")
+	.then((response) => response.json())
+	.then((data) => {
+		dades = data.elements;
 
-/*
-
-
-// Funciones asincronas
-async function getPeliculas(){
-	const response = await response.json();
-	peliculas = data.movies;
-	return data.movies
-};
-
-
-*/
+		dades.forEach(dades => {
+			municipiosArray.push({
+				"Nombre": dades.municipi_nom,
+				"Escudo": dades.municipi_escut,
+				"Habitantes": dades.nombre_habitants,
+				"Extension ": dades.extensio,
+			})
+		});
+		//console.table(municipiosArray);
+	});
